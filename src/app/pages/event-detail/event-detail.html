@@ -1,0 +1,23 @@
+<div class="detail">
+  <a routerLink="/">← Back</a>
+
+  @if (loading()) { <p>Loading markets...</p> }
+
+  @for (market of markets(); track market.id) {
+    <div class="market">
+      <h3>{{ market.marketTypeName }}</h3>
+      <div class="outcomes">
+        @for (outcome of market.outcomes; track outcome.id) {
+          <button class="outcome">
+            <span class="name">{{ outcome.outcomeTypeName }}</span>
+            <span class="odds">{{ outcome.odds }}</span>
+          </button>
+        }
+      </div>
+    </div>
+  }
+
+  @if (!loading() && markets().length === 0) {
+    <p>No markets for this event.</p>
+  }
+</div>

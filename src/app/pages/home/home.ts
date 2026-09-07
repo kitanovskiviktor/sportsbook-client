@@ -3,11 +3,12 @@ import { Tree } from './components/tree/tree';
 import { TreeStore } from '../../data/tree/tree.store';
 import { TreeSelectionStore } from '../../data/tree-selection/tree-selection.store';
 import { EventStore } from '../../data/events/event.store';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Tree],
+  imports: [Tree, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -9,7 +9,7 @@
     }
 
     @for (event of events(); track event.id) {
-      <div class="event-card">
+      <div class="event-card" [routerLink]="['/event', event.id]">
         <span>{{ event.homeTeam }} vs {{ event.awayTeam }}</span>
         <small>{{ event.startTime }} · {{ event.leagueName }}</small>
       </div>
