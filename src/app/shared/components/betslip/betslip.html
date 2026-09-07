@@ -1,0 +1,43 @@
+<div class="betslip">
+  <div class="header">
+    Bet Slip ({{ count() }})
+    @if (count() > 0) {
+      <button class="clear" (click)="clear()">Clear</button>
+    }
+  </div>
+
+  @if (count() === 0) {
+    <p class="empty">No selections</p>
+  }
+
+  @for (sel of selections(); track sel.outcomeId) {
+    <div class="selection">
+      <div class="info">
+        <small>{{ sel.homeTeam }} vs {{ sel.awayTeam }}</small>
+        <span
+          >{{ sel.marketName }}: <strong>{{ sel.outcomeName }}</strong></span
+        >
+      </div>
+      <span class="odds">{{ sel.odds }}</span>
+      <button class="remove" (click)="remove(sel.outcomeId)">×</button>
+    </div>
+  }
+
+  @if (count() > 0) {
+    <div class="summary">
+      <div class="row">
+        <span>Total odds:</span>
+        <strong>{{ totalOdds().toFixed(2) }}</strong>
+      </div>
+      <div class="row">
+        <span>Stake:</span>
+        <input type="number" [ngModel]="stake()" (ngModelChange)="onStakeChange($event)" min="0" />
+      </div>
+      <div class="row win">
+        <span>Potential win:</span>
+        <strong>{{ potentialWin().toFixed(2) }}</strong>
+      </div>
+      <button class="place">Place Bet</button>
+    </div>
+  }
+</div>

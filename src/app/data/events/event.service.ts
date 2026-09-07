@@ -9,9 +9,10 @@ export class EventService {
   private apiUrl = 'http://localhost:8080/api/events';
 
   getEventsByLeagues(leagueIds: number[], hours: number): Observable<EventResponse[]> {
-    return this.http.post<EventResponse[]>(
-      `${this.apiUrl}/by-leagues?hours=${hours}`,
-      leagueIds
-    );
+    return this.http.post<EventResponse[]>(`${this.apiUrl}/by-leagues?hours=${hours}`, leagueIds);
+  }
+
+  getEventById(id: number): Observable<EventResponse> {
+    return this.http.get<EventResponse>(`${this.apiUrl}/${id}`);
   }
 }
