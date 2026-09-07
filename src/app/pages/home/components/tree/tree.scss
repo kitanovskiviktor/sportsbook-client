@@ -45,3 +45,28 @@
     color: #555;
   }
 }
+
+.time-filter {
+  display: flex;
+}
+
+.time-chip {
+  padding: 6px 10px;
+  border: 1px solid #cecece;
+  background: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  transition: all 0.15s;
+  flex: 1;
+
+  &:hover {
+    border-color: #999;
+  }
+
+  &.active {
+    background: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+  }
+}

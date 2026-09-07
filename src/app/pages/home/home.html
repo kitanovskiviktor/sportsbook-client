@@ -1,4 +1,22 @@
-@if (loading()) { <p>Loading...</p> }
-@if (error()) { <p>{{ error() }}</p> }
+<div class="layout">
+  <aside class="sidebar">
+    <app-tree [sports]="tree()" (hoursChanged)="onHoursChanged($event)" />
+  </aside>
 
-<app-tree [sports]="tree()" />
+  <main class="content">
+    @if (eventsLoading()) {
+      <p>Loading events...</p>
+    }
+
+    @for (event of events(); track event.id) {
+      <div class="event-card">
+        <span>{{ event.homeTeam }} vs {{ event.awayTeam }}</span>
+        <small>{{ event.startTime }} · {{ event.leagueName }}</small>
+      </div>
+    }
+
+    @if (!eventsLoading() && events().length === 0) {
+      <p>Select leagues to see events.</p>
+    }
+  </main>
+</div>

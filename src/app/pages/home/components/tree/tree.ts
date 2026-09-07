@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { SportTree, CategoryTree, LeagueTree } from '../../../../data/tree/models/tree.model';
 import { TreeSelectionStore } from '../../../../data/tree-selection/tree-selection.store';
 import { CheckboxState } from '../../../../shared/components/checkbox/enum/CheckboxState';
@@ -18,6 +18,11 @@ export class Tree {
 
   expandedSports = signal<Record<number, boolean>>({});
   expandedCategories = signal<Record<number, boolean>>({});
+
+  readonly hourOptions = [1, 2, 24, 48];
+  selectedHours = signal<number>(24);
+
+  hoursChanged = output<number>();
 
   leagueState(league: LeagueTree): CheckboxState {
     return this.treeSelection.selectedLeagues()[league.id]
@@ -68,5 +73,14 @@ export class Tree {
   toggleCategoryExpand(categoryId: number): void {
     const current = this.expandedCategories();
     this.expandedCategories.set({ ...current, [categoryId]: !current[categoryId] });
+  }
+
+  selectHours(hours: number): void {
+    if (hours === this.selectedHours()) return;
+    this.selectedHours.set(hours);
+    this.treeSelection.clear();
+    this.expandedSports.set({});
+    this.expandedCategories.set({});
+    this.hoursChanged.emit(hours);
   }
 }

@@ -1,3 +1,10 @@
+<div class="time-filter">
+  @for (h of hourOptions; track h) {
+    <button class="time-chip" [class.active]="selectedHours() === h" (click)="selectHours(h)">
+      {{ h }}H
+    </button>
+  }
+</div>
 <div class="tree">
   @for (sport of sports(); track sport.id) {
     <div class="tree-item sport-item">
