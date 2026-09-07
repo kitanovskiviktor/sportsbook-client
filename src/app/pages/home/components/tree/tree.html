@@ -1,0 +1,26 @@
+<div class="tree">
+  @for (sport of sports(); track sport.id) {
+    <div class="tree-item sport-item">
+      <span class="label" (click)="toggleSportExpand(sport.id)">{{ sport.name }}</span>
+      <app-checkbox [state]="sportState(sport)" (toggle)="onSportToggle(sport)" />
+    </div>
+
+    @if (expandedSports()[sport.id]) {
+      @for (category of sport.categories; track category.id) {
+        <div class="tree-item category-item">
+          <span class="label" (click)="toggleCategoryExpand(category.id)">{{ category.name }}</span>
+          <app-checkbox [state]="categoryState(category)" (toggle)="onCategoryToggle(category)" />
+        </div>
+
+        @if (expandedCategories()[category.id]) {
+          @for (league of category.leagues; track league.id) {
+            <div class="tree-item league-item">
+              <span class="label league-label">{{ league.name }}</span>
+              <app-checkbox [state]="leagueState(league)" (toggle)="onLeagueToggle(league)" />
+            </div>
+          }
+        }
+      }
+    }
+  }
+</div>

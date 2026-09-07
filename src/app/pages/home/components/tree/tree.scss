@@ -1,0 +1,47 @@
+.tree {
+  width: 280px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #f5f7fa;
+  }
+
+  .label {
+    cursor: pointer;
+    user-select: none;
+    flex: 1;
+  }
+}
+
+.sport-item {
+  font-weight: 600;
+  background: #fafafa;
+}
+
+.category-item {
+  padding-left: 24px;
+  font-weight: 500;
+}
+
+.league-item {
+  padding-left: 40px;
+
+  .league-label {
+    cursor: default;
+    font-weight: 400;
+    color: #555;
+  }
+}

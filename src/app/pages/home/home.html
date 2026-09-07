@@ -1,0 +1,4 @@
+@if (loading()) { <p>Loading...</p> }
+@if (error()) { <p>{{ error() }}</p> }
+
+<app-tree [sports]="tree()" />

@@ -1,0 +1,5 @@
+export enum CheckboxState {
+  SELECTED = 'SELECTED',
+  PARTLY_SELECTED = 'PARTLY_SELECTED',
+  NOT_SELECTED = 'NOT_SELECTED'
+}
