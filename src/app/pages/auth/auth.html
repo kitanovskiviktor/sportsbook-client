@@ -1,0 +1,25 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>{{ isLoginMode() ? 'Login' : 'Register' }}</h2>
+
+    <input [(ngModel)]="username" placeholder="Username" />
+
+    @if (!isLoginMode()) {
+      <input [(ngModel)]="email" type="email" placeholder="Email" />
+    }
+
+    <input [(ngModel)]="password" type="password" placeholder="Password" />
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <button (click)="submit()" [disabled]="loading()">
+      {{ loading() ? '...' : isLoginMode() ? 'Login' : 'Register' }}
+    </button>
+
+    <p class="toggle" (click)="toggleMode()">
+      {{ isLoginMode() ? 'No account? Register' : 'Have an account? Login' }}
+    </p>
+  </div>
+</div>
