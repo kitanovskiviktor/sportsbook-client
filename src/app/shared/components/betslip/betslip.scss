@@ -79,3 +79,19 @@
     font-weight: 600;
   }
 }
+
+.msg {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  &.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  &.error {
+    background: #ffebee;
+    color: #c62828;
+  }
+}

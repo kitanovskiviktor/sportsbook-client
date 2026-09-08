@@ -37,7 +37,19 @@
         <span>Potential win:</span>
         <strong>{{ potentialWin().toFixed(2) }}</strong>
       </div>
-      <button class="place">Place Bet</button>
+      <button class="place" (click)="placeTicket()" [disabled]="placing()">
+        {{ isLoggedIn() ? (placing() ? 'Placing...' : 'Place Bet') : 'Login to place a bet' }}
+      </button>
     </div>
+  }
+
+  @if (message()) {
+    <p
+      class="msg"
+      [class.success]="messageType() === 'success'"
+      [class.error]="messageType() === 'error'"
+    >
+      {{ message() }}
+    </p>
   }
 </div>
