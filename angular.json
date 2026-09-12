@@ -29,9 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -66,6 +64,9 @@
             "development": {
               "buildTarget": "sportsbook-client:build:development"
             }
+          },
+          "options": {
+            "allowedHosts": ["branda.local", "brandb.local"]
           },
           "defaultConfiguration": "development"
         },
